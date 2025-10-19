@@ -1,0 +1,14 @@
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/bin/Debug/net9.0/DocGen
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/bin/Debug/net9.0/DocGen.deps.json
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/bin/Debug/net9.0/DocGen.runtimeconfig.json
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/bin/Debug/net9.0/DocGen.dll
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/bin/Debug/net9.0/DocGen.pdb
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.GeneratedMSBuildEditorConfig.editorconfig
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.AssemblyInfoInputs.cache
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.AssemblyInfo.cs
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.csproj.CoreCompileInputs.cache
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.dll
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/refint/DocGen.dll
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.pdb
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/DocGen.genruntimeconfig.cache
+/Users/karthikmutyala/Downloads/Personal_Projects/DocGen/obj/Debug/net9.0/ref/DocGen.dll

@@ -12,7 +12,7 @@ namespace DocGen.Helpers
     {
         private static Dictionary<string, List<string>> _fileCache = new Dictionary<string, List<string>>();
 
-        public static void ParseThroughDirectory(string path)
+        public static string ParseThroughDirectoryAndGetFileContent(string path)
         {
             foreach (var file in Directory.EnumerateFiles(path, "*.*", SearchOption.AllDirectories))
             {
@@ -23,11 +23,11 @@ namespace DocGen.Helpers
                         if(_fileCache.ContainsKey(Path.GetExtension(file)))
                         {
                             var existingFiles = _fileCache[Path.GetExtension(file)];
-                            existingFiles.Add(Path.GetFileName(file));
+                            existingFiles.Add(file);
                         }
                         else
                         {
-                            _fileCache.Add(Path.GetExtension(file), new List<string> { Path.GetFileName(file) });
+                            _fileCache.Add(Path.GetExtension(file), new List<string> {file});
 
                         }
 
@@ -40,43 +40,31 @@ namespace DocGen.Helpers
             
 
             }
-            WriteFilesToExcel(_fileCache);
+            return retreiveCodeFilesContent();
         }
 
-        private static void WriteFilesToExcel(Dictionary<string, List<string>> files)
+        private  static string retreiveCodeFilesContent()
         {
-           
-            
-
-            string outputPath = "C:\\Users\\karth\\source\\repos\\DocGen\\FileListByExtension1.xlsx";
-
-            var extensions = files.Keys.OrderBy(ext => ext).ToList();
-            int maxRows = files.Values.Any() ? files.Values.Max(list => list.Count) : 0;
-
-            using (var workbook = new XLWorkbook())
+            StringBuilder totalContents = new StringBuilder();
+            HashSet<string> filesExtensions = new HashSet<string> {
+                ".js", ".java", ".cs"};
+            foreach (KeyValuePair<string, List<string>> entry in _fileCache)
             {
-                var worksheet = workbook.Worksheets.Add("FilesByExtension1");
-
-                // Write header
-                for (int col = 0; col < extensions.Count; col++)
+                if (filesExtensions.Contains(entry.Key))
                 {
-                    worksheet.Cell(1, col + 1).Value = extensions[col];
-                }
-
-                // Write file names row by row
-                for (int row = 0; row < maxRows; row++)
-                {
-                    for (int col = 0; col < extensions.Count; col++)
+                    foreach (string fileName in entry.Value)
                     {
-                        var ext = extensions[col];
-                        var fileList = files[ext];
-                        worksheet.Cell(row + 2, col + 1).Value = fileList.Count > row ? fileList[row] : "";
+                        totalContents.Append($"\r\n --------------------- {Path.GetFileName(fileName)} ---------------------\r\n");
+
+                        totalContents.Append(File.ReadAllText(fileName, Encoding.UTF8));
+                        totalContents.Append("\r\n");
                     }
                 }
+                //File.WriteAllText("C:\\Users\\karth\\source\\repos\\DocGen\\CodeFilesContent.txt", totalContents.ToString());
 
-                workbook.SaveAs(outputPath);
-                workbook.Dispose();
             }
+            return totalContents.ToString();
+
         }
 
 

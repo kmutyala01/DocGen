@@ -23,11 +23,11 @@ namespace DocGen.Helpers
         }
 
 
-        public  string getOpenAIResponse(string prompt)
+        public string getOpenAIResponse(string prompt)
         {
             OpenAIResponseClient client = new(model: "gpt-5-mini", apiKey: _apiKey);
 
-            OpenAIResponse response = client.CreateResponse("Please provide a high level overview of " + prompt);
+            OpenAIResponse response = client.CreateResponse("Please provide a breif high level overview of " + prompt);
 
             return response.GetOutputText();
         }
